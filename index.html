@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Merchant UPI | Smart Business</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================
+     ANIMATED BACKGROUND
+     ========================================== -->
+
+<div class="background">
+
+    <div class="orb orb1"></div>
+
+    <div class="orb orb2"></div>
+
+    <div class="orb orb3"></div>
+
+</div>
+
+
+
+<!-- ==========================================
+     MAIN WEBSITE
+     ========================================== -->
+
+<div class="container">
+
+
+    <!-- HEADER -->
+
+    <div class="hero">
+
+        <div class="badge">
+            ⚡ SMART UPI PLATFORM
+        </div>
+
+
+        <h1>
+            Merchant <span>UPI</span>
+        </h1>
+
+
+        <h2>
+            Smarter Payments. Smarter Business.
+        </h2>
+
+
+        <p>
+            Accept UPI payments, monitor transactions,
+            detect unusual activity, analyze sales
+            and get intelligent business assistance.
+        </p>
+
+    </div>
+
+
+
+    <!-- ==========================================
+         DASHBOARD
+         ========================================== -->
+
+    <section>
+
+        <h2 class="section-title">
+            📊 Business Dashboard
+        </h2>
+
+
+        <div class="stats">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🔄
+                </div>
+
+                <p>
+                    Total Transactions
+                </p>
+
+                <h3 id="totalTransactions">
+                    0
+                </h3>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    💰
+                </div>
+
+                <p>
+                    Total Sales
+                </p>
+
+                <h3 id="totalSales">
+                    ₹0
+                </h3>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ✅
+                </div>
+
+                <p>
+                    Success Rate
+                </p>
+
+                <h3 id="successRate">
+                    0%
+                </h3>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🚨
+                </div>
+
+                <p>
+                    Unusual Transactions
+                </p>
+
+                <h3 id="unusualCount">
+                    0
+                </h3>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         UPI PAYMENT
+         ========================================== -->
+
+    <section class="payment-section">
+
+        <h2 class="section-title">
+            📱 Pay Using UPI
+        </h2>
+
+
+        <p class="subtitle">
+            Scan the QR code using your UPI application
+        </p>
+
+
+        <div class="qr-container">
+
+            <div class="qr-glow"></div>
+
+            <img
+                id="upiQR"
+                alt="UPI QR Code"
+            >
+
+        </div>
+
+
+        <div class="merchant-info">
+
+            <h3>
+                🏪 MerchantUPI Store
+            </h3>
+
+            <p>
+
+                UPI ID:
+
+                <strong id="displayUPI">
+                    YOUR_UPI_ID@upi
+                </strong>
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         RECORD PAYMENT + AUTOMATIC FRAUD
+         ========================================== -->
+
+    <section>
+
+        <h2 class="section-title">
+            💸 Smart Payment & Automatic Fraud Detection
+        </h2>
+
+
+        <p class="subtitle">
+
+            Every recorded transaction is automatically
+            analyzed for unusual patterns.
+
+        </p>
+
+
+        <div class="form-card">
+
+
+            <label>
+                Customer Name
+            </label>
+
+
+            <input
+                id="customerName"
+                type="text"
+                placeholder="Enter customer name"
+            >
+
+
+
+            <label>
+                Payment Amount
+            </label>
+
+
+            <input
+                id="upiAmount"
+                type="number"
+                placeholder="Enter amount"
+            >
+
+
+
+            <button
+                class="primary-btn"
+                onclick="receivePayment()">
+
+                💳 Record & Analyze Payment
+
+            </button>
+
+
+            <div
+                id="paymentStatus"
+                class="result">
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         TRANSACTIONS
+         ========================================== -->
+
+    <section>
+
+        <h2 class="section-title">
+            🔴 Live Transactions
+        </h2>
+
+
+        <div
+            id="transactionList"
+            class="transactions">
+
+            <div class="empty">
+
+                No transactions yet.
+
+                <br>
+
+                Record a payment to see it here.
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         SALES ANALYTICS
+         ========================================== -->
+
+    <section>
+
+        <h2 class="section-title">
+            📈 Sales Analytics
+        </h2>
+
+
+        <p class="subtitle">
+            Understand your business activity and sales patterns.
+        </p>
+
+
+        <div class="stats">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    💰
+                </div>
+
+                <p>
+                    Total Sales
+                </p>
+
+                <h3 id="analyticsSales">
+                    ₹0
+                </h3>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🔄
+                </div>
+
+                <p>
+                    Transactions
+                </p>
+
+                <h3 id="analyticsTransactions">
+                    0
+                </h3>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    💵
+                </div>
+
+                <p>
+                    Average Transaction
+                </p>
+
+                <h3 id="averageTransaction">
+                    ₹0
+                </h3>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="analytics-card">
+
+            <h3>
+                Recent Transaction Pattern
+            </h3>
+
+            <div id="salesBars">
+            </div>
+
+            <p id="salesInsight">
+                Record transactions to generate sales insights.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         SMART ALERTS
+         ========================================== -->
+
+    <section>
+
+        <h2 class="section-title">
+            🔔 Smart Alerts
+        </h2>
+
+
+        <p class="subtitle">
+            Important business events are highlighted automatically.
+        </p>
+
+
+        <div id="smartAlerts">
+
+            <div class="alert-card normal-alert">
+
+                <span class="alert-icon">
+                    💡
+                </span>
+
+                <div>
+
+                    <strong>
+                        Smart Alert System
+                    </strong>
+
+                    <p>
+                        Your business alerts will appear here automatically.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         ANOMALY DETECTION
+         ========================================== -->
+
+    <section>
+
+        <h2 class="section-title">
+            🔍 Transaction Anomaly Detection
+        </h2>
+
+
+        <p class="subtitle">
+
+            Check whether a transaction amount
+            looks normal or unusual.
+
+        </p>
+
+
+        <div class="form-card">
+
+
+            <label>
+                Transaction Amount
+            </label>
+
+
+            <input
+                id="checkAmount"
+                type="number"
+                placeholder="Example: 50000"
+            >
+
+
+            <button
+                class="primary-btn"
+                onclick="checkTransaction()">
+
+                🔍 Detect Anomaly
+
+            </button>
+
+
+            <div
+                id="transactionResult"
+                class="result">
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         MANUAL FRAUD DETECTION
+         ========================================== -->
+
+    <section>
+
+        <h2 class="section-title">
+            🛡️ Fraud Risk Analysis
+        </h2>
+
+
+        <p class="subtitle">
+
+            Analyze transaction amount and
+            transaction frequency.
+
+        </p>
+
+
+        <div class="form-card">
+
+
+            <label>
+                Transaction Amount
+            </label>
+
+
+            <input
+                id="fraudAmount"
+                type="number"
+                placeholder="Example: 50000"
+            >
+
+
+            <label>
+                Transactions Today
+            </label>
+
+
+            <input
+                id="fraudCount"
+                type="number"
+                placeholder="Example: 15"
+            >
+
+
+            <button
+                class="primary-btn"
+                onclick="detectFraud()">
+
+                🛡️ Analyze Fraud Risk
+
+            </button>
+
+
+            <div
+                id="fraudResult"
+                class="result">
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         CREDIT SCORE
+         ========================================== -->
+
+    <section>
+
+        <h2 class="section-title">
+            💳 Merchant Credit Readiness
+        </h2>
+
+
+        <p class="subtitle">
+
+            Estimate merchant credit readiness
+            from business activity.
+
+        </p>
+
+
+        <div class="form-card">
+
+
+            <label>
+                Total Transactions
+            </label>
+
+
+            <input
+                id="transactions"
+                type="number"
+                placeholder="Example: 100"
+            >
+
+
+            <label>
+                Successful Payments
+            </label>
+
+
+            <input
+                id="successful"
+                type="number"
+                placeholder="Example: 95"
+            >
+
+
+            <label>
+                Monthly Sales
+            </label>
+
+
+            <input
+                id="sales"
+                type="number"
+                placeholder="Example: 50000"
+            >
+
+
+            <button
+                class="primary-btn"
+                onclick="calculateCreditScore()">
+
+                💳 Calculate Score
+
+            </button>
+
+
+            <div
+                id="creditResult"
+                class="result">
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</div>
+
+
+
+<!-- ==========================================
+     FLOATING AI ROBOT
+     ========================================== -->
+
+<div
+    class="ai-robot"
+    onclick="toggleChat()">
+
+    🤖
+
+    <span class="robot-tooltip">
+        Need Help?
+    </span>
+
+</div>
+
+
+
+<!-- ==========================================
+     AI CHAT WINDOW
+     ========================================== -->
+
+<div
+    id="aiChatBox"
+    class="ai-chat-box">
+
+
+    <div class="ai-chat-header">
+
+
+        <div class="robot-face">
+            🤖
+        </div>
+
+
+        <div class="ai-title">
+
+            <strong>
+                Merchant AI
+            </strong>
+
+            <small>
+                ● Online Assistant
+            </small>
+
+        </div>
+
+
+        <button
+            class="close-chat"
+            onclick="toggleChat()">
+
+            ×
+
+        </button>
+
+
+    </div>
+
+
+
+    <div
+        id="aiMessages"
+        class="ai-messages">
+
+
+        <div class="ai-message">
+
+            👋 Hi! I'm your Merchant AI Assistant.
+
+            <br><br>
+
+            Ask me about:
+
+            <br><br>
+
+            💳 UPI payments
+
+            <br>
+
+            🛡️ Fraud detection
+
+            <br>
+
+            🔍 Anomaly detection
+
+            <br>
+
+            📊 Sales analytics
+
+            <br>
+
+            🔔 Smart alerts
+
+            <br>
+
+            💳 Credit readiness
+
+            <br>
+
+            💡 Or ask me a general question.
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="ai-input">
+
+
+        <input
+            id="aiInput"
+            type="text"
+            placeholder="Ask me anything..."
+            onkeydown="handleAIEnter(event)"
+        >
+
+
+        <button
+            onclick="sendAIMessage()">
+
+            ➤
+
+        </button>
+
+
+    </div>
+
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
